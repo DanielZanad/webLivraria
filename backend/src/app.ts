@@ -1,9 +1,11 @@
 import express from 'express';
-import router from './routes/routes';
+import routerUsers from './routes/users';
+import routerProducts from './routes/products';
 const app = express();
 
 
-app.use('/', router);
+app.use('/users', routerUsers);
+app.use('/products', routerProducts);
 
 
 
