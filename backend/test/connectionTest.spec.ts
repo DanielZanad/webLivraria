@@ -1,4 +1,3 @@
-import supertest from "supertest";
 import knex from "../src/database/database";
 
 
