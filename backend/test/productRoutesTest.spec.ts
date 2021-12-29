@@ -18,10 +18,18 @@ describe("Verificando rotas de produtos",()=>{
         });
     });
 
-    it("Deve verificar a rota de vai retornar um produto por id", ()=>{
+    it("Deve verificar a rota que vai retornar um produto por id", ()=>{
         // Prepare && Act
         return request.get('/products/1').then(res =>{
             // Assert 
+            expect(res.statusCode).toEqual(200);
+        })
+    })
+
+    it("Deve verificar a rota de retorno de produto por categoria ", ()=>{
+        // Prepare && Act
+        return request.get('/products/category/1').then(res =>{
+            // Assert
             expect(res.statusCode).toEqual(200);
         })
     })
