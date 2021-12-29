@@ -68,7 +68,7 @@ router.delete('/:id',async (req, res)=>{
             message: result.message
         });
     }else{
-        res.status(200).send({
+        res.status(400).send({
             status: result.status,
             message: result.message
         });

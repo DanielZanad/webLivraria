@@ -9,7 +9,7 @@ const request = supertest(app);
 import User from '../src/models/User';
 
 
-describe("Verficacao de funcionamento de rotas", ()=>{
+describe("Verficacao de funcionamento de rotas de usuarios", ()=>{
     it("Deve verificar de 'users' esta retornando 200", ()=>{
         // Prepare && Act
         return request.get('/users').then(res =>{
@@ -18,13 +18,6 @@ describe("Verficacao de funcionamento de rotas", ()=>{
         });
     });
 
-    it("Deve verificar de 'products' esta retornando 200", ()=>{
-        // Prepare && Act
-        return request.get('/products').then(res =>{
-            // Assert
-            expect(res.statusCode).toEqual(200);
-        });
-    });
 
 
     it("Deve verificar rota de cadastro de usuarios", ()=>{
@@ -43,10 +36,17 @@ describe("Verficacao de funcionamento de rotas", ()=>{
         return request.get('/users/1').then(res =>{
             // Assert
             expect(res.statusCode).toEqual(200);
-            userController.delete(1);
         });
     });
 
+
+    it("Deve verificar a rota de delecao de usuario",()=>{
+        // Prepare && Act
+        return request.delete('/users/1').then(res =>{
+            // Assert
+            expect(res.statusCode).toEqual(200);
+        })
+    })
 
 
 
