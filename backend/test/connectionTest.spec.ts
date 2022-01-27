@@ -1,7 +1,5 @@
 import knex from "../src/database/database";
 
-
-
 it("Testar a conexao com o banco de dados, inserindo dados",()=>{
 
     // Select  

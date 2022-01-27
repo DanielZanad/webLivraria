@@ -2,7 +2,7 @@ import express from 'express';
 import routerUsers from './routes/users';
 import routerProducts from './routes/products';
 import cors from 'cors';
-import bodyParser from 'body-parser';
+
 const app = express();
 
 
