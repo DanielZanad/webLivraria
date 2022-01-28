@@ -49,7 +49,7 @@ export default {};
 img#logo {
   height: 85px;
   width: 260px;
-  margin: 10px 110px 15px 60px;
+  margin: 10px 80px 15px 60px;
 }
 div#searchBar {
   text-align: center;
@@ -99,6 +99,7 @@ div#user-login-register {
   font-size: 12px;
   line-height: 21px;
   display: inline-block;
+  font-size: 0.9em;
 }
 .link {
   text-decoration: none;
