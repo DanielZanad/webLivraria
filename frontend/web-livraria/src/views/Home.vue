@@ -1,15 +1,15 @@
 <template>
   <div class="home">
-    <NavBar />
+    <Header />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import NavBar from "@/components/Nav.vue";
+import Header from "@/components/Header.vue";
 
 export default {
   name: "Home",
-  components: {NavBar},
+  components: {Header},
 };
 </script>

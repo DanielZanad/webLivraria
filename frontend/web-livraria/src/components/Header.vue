@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div id="header">
     <img
       src="../assets/WebLivrariaLogo_1.png"
       alt="WebLivraria Logo"
@@ -100,8 +100,8 @@ div#user-login-register {
   line-height: 21px;
   display: inline-block;
 }
-.link{
-    text-decoration: none;
+.link {
+  text-decoration: none;
 }
 div#cart {
   display: inline;
