@@ -34,7 +34,7 @@
         <p>Ola Bem Vindo</p>
         <br />
         <router-link to="/login" class="link">Entre</router-link> ou
-        <router-link to="/regiter" class="link">Cadastra-se</router-link>
+        <router-link to="/register" class="link">Cadastra-se</router-link>
       </div>
     </div>
   </div>
