@@ -4,13 +4,15 @@ class Product{
     private price: number;
     private img: string;
     private cod_categ: number;
+    private description: string
 
-    constructor(id: number, name: string, price: number, img: string, cod_categ: number){
+    constructor(id: number, name: string, price: number, img: string, cod_categ: number, description: string){
         this.id = id;
         this.name = name;
         this.price = price;
         this.img = img;
         this.cod_categ = cod_categ;
+        this.description = description;
     }
 
     
@@ -47,6 +49,13 @@ class Product{
     }
     set setCod_categ(cod_categ: number){
         this.cod_categ = cod_categ;
+    }
+
+    get getDescription(): string{
+        return this.description
+    }
+    set setDescrition(description: string){
+        this.description = description
     }
 
 }

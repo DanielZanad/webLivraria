@@ -22,7 +22,7 @@ describe("Verficacao de funcionamento de rotas de usuarios", ()=>{
 
     it("Deve verificar rota de cadastro de usuarios", ()=>{
         // Prepare 
-        let user = new User(1,"Teste","teste@teste.com","4402-8922","2001-03-02","32fdsa2");
+        let user = new User(666,"Teste","teste@teste.com","4402-8922","2001-03-02","32fdsa2");
         // Act
         return request.post('/users').send(user).then(res =>{
 
@@ -42,7 +42,7 @@ describe("Verficacao de funcionamento de rotas de usuarios", ()=>{
 
     it("Deve verificar a rota de delecao de usuario",()=>{
         // Prepare && Act
-        return request.delete('/users/1').then(res =>{
+        return request.delete('/users/666').then(res =>{
             // Assert
             expect(res.statusCode).toEqual(200);
         })

@@ -5,13 +5,9 @@ import UserController from '../controllers/UserController';
 let userController = new UserController();
 const router = express.Router();
 
-
-
-
 router.get('/', (req, res)=>{
     res.status(200).send({message: "Tudo ok"});
 });
-
 
 router.get('/:id', async (req, res)=>{
     let id = Number(req.params.id);
