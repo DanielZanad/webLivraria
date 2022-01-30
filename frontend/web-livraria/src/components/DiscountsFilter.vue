@@ -31,21 +31,21 @@ div#discount-filters-msg > h3 {
   line-height: 35px;
   margin-bottom: 5px;
 }
-div#discount-filters-btn{
-    margin: 40px 40px 40px 0px;
-}   
-.button-filter{
-    font-family: "Roboto", sans-serif;
-    margin-left: 40px;
-    padding: 15px;
-    font-size: 1.1em;
-    color: #6ab6cf;
-    border: solid;
-    border-radius: 10px;
-    cursor: pointer;
+div#discount-filters-btn {
+  margin: 40px 40px 40px 0px;
 }
-.button-filter:focus{
-    background-color: #7ad3f0;
-    color: white;
-}   
+.button-filter {
+  font-family: "Roboto", sans-serif;
+  margin-left: 40px;
+  padding: 15px;
+  font-size: 1.1em;
+  color: #6ab6cf;
+  border: solid;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.button-filter:focus {
+  background-color: #7ad3f0;
+  color: white;
+}
 </style>
