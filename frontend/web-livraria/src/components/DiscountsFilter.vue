@@ -32,7 +32,7 @@ div#discount-filters-msg > h3 {
   margin-bottom: 5px;
 }
 div#discount-filters-btn {
-  margin: 40px 40px 40px 0px;
+  margin: 40px 40px 20px 0px;
 }
 .button-filter {
   font-family: "Roboto", sans-serif;
