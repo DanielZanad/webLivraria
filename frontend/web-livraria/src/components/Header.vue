@@ -44,7 +44,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 img#logo {
   height: 85px;

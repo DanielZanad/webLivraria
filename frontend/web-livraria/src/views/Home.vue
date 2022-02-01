@@ -27,7 +27,10 @@ export default {
   },
   components: { Header, NavBar, Discount, DiscountFilter,CardProduct },
   created() {
-    this.$store.dispatch('requestAllProducts');
+    
+  
+    document.body.style.backgroundColor = "white"
+  
   },
   computed:{
     productComputed(){

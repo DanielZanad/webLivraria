@@ -16,7 +16,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 div#nav-container {
   background: #7ad3f0;
   height: 70px;
