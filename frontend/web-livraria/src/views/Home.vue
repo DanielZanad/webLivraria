@@ -17,6 +17,7 @@ import NavBar from "@/components/Nav.vue";
 import Discount from "@/components/Discounts.vue";
 import DiscountFilter from "@/components/DiscountsFilter.vue";
 import CardProduct from '@/components/CardProduct.vue'
+import {mapGetters} from 'vuex';
 
 export default {
   name: "Home",
@@ -33,8 +34,12 @@ export default {
   
   },
   computed:{
+    ...mapGetters([
+      "productList"
+    ]),
+
     productComputed(){
-      return this.$store.getters.productList
+      return this.productList
     }
   }
 };

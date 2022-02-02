@@ -2,9 +2,14 @@
   <router-view/>
 </template>
 <script>
+import {mapActions} from 'vuex'
 export default {
+  methods:{
+    ...mapActions(['requestAllProducts'])
+  },
+
   created(){
-    this.$store.dispatch('requestAllProducts');
+    this.requestAllProducts();
   }
 }
 </script>
