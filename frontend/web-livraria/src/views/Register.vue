@@ -7,44 +7,148 @@
   <div id="register">
     <h1>Criar Conta</h1>
     <hr />
-    <form action="" id="register-form">
+    <div id="register-form">
       <div id="form-row1" class="form-rows">
-        <input type="text" placeholder="nome" id="name" />
-        <input type="text" placeholder="celular" id="cel" />
-        <input type="date" placeholder="__/__/__" id="birth" />
+        <input v-model="user.name" type="text" placeholder="nome" id="name" />
+        <input
+          v-model="user.phone"
+          type="text"
+          placeholder="celular"
+          id="cel"
+        />
+        <input
+          v-model="user.birth"
+          type="date"
+          placeholder="__/__/__"
+          id="birth"
+        />
       </div>
       <div id="form-row2" class="form-rows">
-        <input type="text" placeholder="Email" id="email" />
-        <select name="gender" id="gender">
-          <option value="Gênero" disabled selected>Gênero</option>
-          <option value="Masculino">Masculino</option>
-          <option value="Feminino">Feminino</option>
-          <option value="Outros">Outros</option>
+        <input
+          v-model="user.email"
+          type="email"
+          placeholder="Email"
+          id="email"
+        />
+        <select v-model="user.gender" name="gender" id="gender">
+          <option disabled value="">Gênero</option>
+          <option>Masculino</option>
+          <option>Feminino</option>
+          <option>Outros</option>
         </select>
       </div>
       <div id="form-row3" class="form-rows">
-        <input type="text" placeholder="Senha" id="password" />
-        <input type="text" placeholder="Confirmar Senha" id="conf-password" />
+        <input
+          v-model="user.password"
+          type="password"
+          placeholder="Senha"
+          id="password"
+        />
+        <input
+          v-model="user.confirmPassword"
+          type="password"
+          placeholder="Confirmar Senha"
+          id="conf-password"
+        />
       </div>
       <div id="btn-register-div">
-        <button id="btn-register">Cadastre-se</button>
+        <button id="btn-register" @click="registerUser">Cadastre-se</button>
       </div>
-    </form>
+    </div>
   </div>
+  <ModalRegisterError v-if="modal" :message="registerError" @changeModalState="showModal()"/>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+import ModalRegisterError from '../components/ModalShowError.vue'
+
 export default {
   name: "register",
-  created(){
-    document.body.style.backgroundColor = "#CCE9F3"
-  }
+  data() {
+    return {
+      registerError: "",
+      modal: false,
+      user: {
+        id: Math.floor(Math.random() * (100000)) + 1,
+        name: "",
+        email: "",
+        phone: "",
+        gender: "",
+        birth: "",
+        password: "",
+        confirmPassword: "",
+      },
+    };
+  },
+  components:{
+    ModalRegisterError
+
+  },
+
+  created() {
+    document.body.style.backgroundColor = "#CCE9F3";
+  },
+  computed: {
+    ...mapState({
+      checkError: (state) => state.User.response,
+    }),
+  },
+  methods: {
+    ...mapActions(["registerNewUser"]),
+    verifyForm() {
+      if (this.user.password != this.user.confirmPassword) {
+        return {
+          error: true,
+          message: "Senhas estao diferentes",
+        };
+      } else {
+        for (let key in this.user) {
+          if (
+            this.user[key] === "" ||
+            this.user[key] === undefined ||
+            this.user[key].length === 0 ||
+            /^\s*$/.test(this.user[key])
+          ) {
+            return {
+              error: true,
+              message: "Algum espaço do formulario esta vazio",
+            };
+          }
+        }
+        return { error: false, message: "Tudo Ok" };
+      }
+    },
+
+    async registerUser() {
+      let verify = await this.verifyForm();
+      if (!verify.error) {
+        delete this.user.confirmPassword;
+        this.registerNewUser(this.user);
+        setTimeout(() => {
+          if (this.checkError[0].status) {
+            this.$router.push({ path: "/login" });
+            console.log(this.checkError[0]);
+          }
+        }, 1000);
+      } else {
+        this.modal = true
+        this.registerError = verify.message
+      }
+    },
+
+    showModal(){
+      this.modal = false;
+    }
+
+
+  },
 };
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
-*{
+* {
   font-size: 20px;
 }
 div#web-livraria-logo {
@@ -68,27 +172,26 @@ div#register {
   height: 500px;
   border-radius: 20px;
 }
-form#register-form {
+div#register-form {
   text-align: left;
   margin-left: 80px;
 }
 .form-rows {
   margin: 50px;
   font-family: Roboto;
-  
 }
 
-form input[id="name"],
-form input[id="email"],
-form input[id="password"],
-form input[id="conf-password"] {
+div input[id="name"],
+div input[id="email"],
+div input[id="password"],
+div input[id="conf-password"] {
   font-size: 20px;
   width: 40%;
   height: 40px;
   margin-right: 15px;
   border-radius: 5px;
 }
-form input[id="birth"] {
+div input[id="birth"] {
   font-size: 20px;
   width: 23%;
   height: 35px;
@@ -96,7 +199,7 @@ form input[id="birth"] {
   padding-top: 4px;
   border-radius: 5px;
 }
-form input[id="cel"] {
+div input[id="cel"] {
   font-size: 20px;
   width: 19%;
   height: 40px;

@@ -15,15 +15,24 @@
       <input type="text" placeholder="Senha" id="password"/>
     </div>
     <button id="btn-login">Entar</button>
-
     </form>
-    
   </div>
+  <ModalShowError v-if="modal"/>
 </template>
 
 <script>
+import ModalShowError from '../components/ModalShowError.vue';
+
 export default {
   name: "login",
+  data(){
+    return{
+      modal: false
+    }
+  },
+  components:{
+    ModalShowError
+  },
   created(){
     document.body.style.backgroundColor = "#CCE9F3"
   }
