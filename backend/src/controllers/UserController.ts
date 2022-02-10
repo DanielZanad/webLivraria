@@ -33,9 +33,9 @@ class UserController {
         let checkedEmail = this.searchUserByEmail(user.getEmail);
         if (!(await checkedEmail).status && (await checkedEmail).user != []) {
             try {
-                let salt = bcrypt.genSaltSync(10);
-                let hash = bcrypt.hashSync(user.getPassword, salt);
-
+                let salt = await bcrypt.genSaltSync(10);
+                let hash = await bcrypt.hashSync(user.getPassword, salt);
+                console.log(user.getId);
                 let query = await knex.insert({
                     id: user.getId,
                     name: user.getName,
