@@ -1,6 +1,6 @@
 import supertest from "supertest";
 import app from "../src/app";
-import UserController from '../src/controllers/UserController';
+
 
 const request = supertest(app);
 import User from '../src/models/User';
@@ -59,7 +59,7 @@ describe("Verficacao de funcionamento de rotas de usuarios", () => {
 
     it("Deve verificar a rota de retorno de usuario por email", () => {
         // Prepare && Act
-        return request.get('/users/teste@teste.com').then(res => {
+        return request.get('/users/testando@testando.com').then(res => {
             // Assert
             expect(res.statusCode).toEqual(200);
         });

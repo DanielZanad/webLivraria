@@ -1,67 +1,73 @@
 <template>
-  <router-link to="/">
-    <div id="web-livraria-logo">
-      <img src="../assets/WebLivrariaLogo_1.png" alt="" />
+  <div>
+    <router-link to="/">
+      <div id="web-livraria-logo">
+        <img src="../assets/WebLivrariaLogo_1.png" alt="" />
+      </div>
+    </router-link>
+    <div id="register">
+      <h1>Criar Conta</h1>
+      <hr />
+      <div id="register-form">
+        <div id="form-row1" class="form-rows">
+          <input v-model="user.name" type="text" placeholder="nome" id="name" />
+          <input
+            v-model="user.phone"
+            type="text"
+            placeholder="celular"
+            id="cel"
+          />
+          <input
+            v-model="user.birth"
+            type="date"
+            placeholder="__/__/__"
+            id="birth"
+          />
+        </div>
+        <div id="form-row2" class="form-rows">
+          <input
+            v-model="user.email"
+            type="email"
+            placeholder="Email"
+            id="email"
+          />
+          <select v-model="user.gender" name="gender" id="gender">
+            <option disabled value="">Gênero</option>
+            <option>Masculino</option>
+            <option>Feminino</option>
+            <option>Outros</option>
+          </select>
+        </div>
+        <div id="form-row3" class="form-rows">
+          <input
+            v-model="user.password"
+            type="password"
+            placeholder="Senha"
+            id="password"
+          />
+          <input
+            v-model="user.confirmPassword"
+            type="password"
+            placeholder="Confirmar Senha"
+            id="conf-password"
+          />
+        </div>
+        <div id="btn-register-div">
+          <button id="btn-register" @click="registerUser">Cadastre-se</button>
+        </div>
+      </div>
     </div>
-  </router-link>
-  <div id="register">
-    <h1>Criar Conta</h1>
-    <hr />
-    <div id="register-form">
-      <div id="form-row1" class="form-rows">
-        <input v-model="user.name" type="text" placeholder="nome" id="name" />
-        <input
-          v-model="user.phone"
-          type="text"
-          placeholder="celular"
-          id="cel"
-        />
-        <input
-          v-model="user.birth"
-          type="date"
-          placeholder="__/__/__"
-          id="birth"
-        />
-      </div>
-      <div id="form-row2" class="form-rows">
-        <input
-          v-model="user.email"
-          type="email"
-          placeholder="Email"
-          id="email"
-        />
-        <select v-model="user.gender" name="gender" id="gender">
-          <option disabled value="">Gênero</option>
-          <option>Masculino</option>
-          <option>Feminino</option>
-          <option>Outros</option>
-        </select>
-      </div>
-      <div id="form-row3" class="form-rows">
-        <input
-          v-model="user.password"
-          type="password"
-          placeholder="Senha"
-          id="password"
-        />
-        <input
-          v-model="user.confirmPassword"
-          type="password"
-          placeholder="Confirmar Senha"
-          id="conf-password"
-        />
-      </div>
-      <div id="btn-register-div">
-        <button id="btn-register" @click="registerUser">Cadastre-se</button>
-      </div>
-    </div>
+    <ModalRegisterError
+      v-if="modal"
+      :message="registerError"
+      @changeModalState="showModal()"
+    />
   </div>
-  <ModalRegisterError v-if="modal" :message="registerError" @changeModalState="showModal()"/>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
-import ModalRegisterError from '../components/ModalShowError.vue'
+import ModalRegisterError from "../components/ModalShowError.vue";
 
 export default {
   name: "register",
@@ -70,7 +76,6 @@ export default {
       registerError: "",
       modal: false,
       user: {
-        id: Math.floor(Math.random() * (100000)) + 1,
         name: "",
         email: "",
         phone: "",
@@ -81,9 +86,8 @@ export default {
       },
     };
   },
-  components:{
-    ModalRegisterError
-
+  components: {
+    ModalRegisterError,
   },
 
   created() {
@@ -132,16 +136,14 @@ export default {
           }
         }, 1000);
       } else {
-        this.modal = true
-        this.registerError = verify.message
+        this.modal = true;
+        this.registerError = verify.message;
       }
     },
 
-    showModal(){
+    showModal() {
       this.modal = false;
-    }
-
-
+    },
   },
 };
 </script>

@@ -1,41 +1,43 @@
 <template>
-  <router-link to="/">
-    <div id="web-livraria-logo">
-      <img src="../assets/WebLivrariaLogo_1.png" alt="" />
+  <div>
+    <router-link to="/">
+      <div id="web-livraria-logo">
+        <img src="../assets/WebLivrariaLogo_1.png" alt="" />
+      </div>
+    </router-link>
+    <div id="login">
+      <h1>Login</h1>
+      <hr />
+      <form action="" id="login-form">
+        <div class="form-rows">
+          <input type="text" placeholder="email" id="email" />
+        </div>
+        <div class="form-rows">
+          <input type="text" placeholder="Senha" id="password" />
+        </div>
+        <button id="btn-login">Entar</button>
+      </form>
     </div>
-  </router-link>
-  <div id="login">
-    <h1>Login</h1>
-    <hr />
-    <form action="" id="login-form">
-      <div class="form-rows">
-      <input type="text" placeholder="email" id="email" />
-    </div>
-    <div class="form-rows">
-      <input type="text" placeholder="Senha" id="password"/>
-    </div>
-    <button id="btn-login">Entar</button>
-    </form>
+    <ModalShowError v-if="modal" />
   </div>
-  <ModalShowError v-if="modal"/>
 </template>
 
 <script>
-import ModalShowError from '../components/ModalShowError.vue';
+import ModalShowError from "../components/ModalShowError.vue";
 
 export default {
   name: "login",
-  data(){
-    return{
-      modal: false
-    }
+  data() {
+    return {
+      modal: false,
+    };
   },
-  components:{
-    ModalShowError
+  components: {
+    ModalShowError,
   },
-  created(){
-    document.body.style.backgroundColor = "#CCE9F3"
-  }
+  created() {
+    document.body.style.backgroundColor = "#CCE9F3";
+  },
 };
 </script>
 
@@ -63,18 +65,17 @@ div#login {
   height: 500px;
   border-radius: 20px;
   font-family: Roboto;
-  
 }
-div.form-rows{
+div.form-rows {
   margin: 20px;
 }
-form input[id='email'],
-form input[id='password']{
+form input[id="email"],
+form input[id="password"] {
   height: 40px;
   font-size: 20px;
   width: 40%;
 }
-button#btn-login{
+button#btn-login {
   margin-top: 100px;
   padding: 15px 100px 15px 100px;
   border-radius: 20px;
@@ -84,8 +85,4 @@ button#btn-login{
   cursor: pointer;
   font-size: 20px;
 }
-
-
-
-
 </style>

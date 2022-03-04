@@ -33,7 +33,7 @@
       <div id="user-login-register">
         <p>Ola Bem Vindo</p>
         <br />
-        <router-link to="/login" class="link">Entre</router-link> ou
+        <router-link to="/login" class="link">Entre</router-link> <p>ou </p>
         <router-link to="/register" class="link">Cadastra-se</router-link>
       </div>
     </div>
@@ -91,6 +91,7 @@ img#img-user {
 }
 p {
   display: inline;
+  font-weight: bolder;
 }
 div#user-login-register {
   font-family: Montserrat;
@@ -103,6 +104,7 @@ div#user-login-register {
 }
 .link {
   text-decoration: none;
+  font-weight: 900;
 }
 div#cart {
   display: inline;
