@@ -65,17 +65,10 @@ router.post('/login', async (req, res) => {
 })
 
 
-router.delete('/:id', async (req, res) => {
-  let id = Number(req.params.id);
+router.delete('/:email', async (req, res) => {
+  let email = req.params.email;
 
-  if (isNaN(id)) {
-    res.status(400).send({
-      status: false,
-      message: "É necessario passar um um ID na rota para deleção"
-    });
-  }
-
-  let result = await userController.delete(id);
+  let result = await userController.delete(email);
   if (result.status) {
     res.status(200).send({
       status: result.status,

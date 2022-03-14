@@ -79,11 +79,11 @@ class UserController {
     }
   }
 
-  // Deleta um usuario por ID
-  async delete(id: number): Promise<Result> {
+  // Deleta um usuario por EMAIL
+  async delete(email: string): Promise<Result> {
     try {
       let query = await knex('users')
-        .where('id', id)
+        .where('email', email)
         .del();
       if (query == 1) {
         return { status: true, message: "Usuario deletado com sucesso" };

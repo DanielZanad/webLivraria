@@ -68,7 +68,7 @@ describe("Verficacao de funcionamento de rotas de usuarios", () => {
 
     it("Deve verificar a rota de delecao de usuario", () => {
         // Prepare && Act
-        return request.delete('/users/666').then(res => {
+        return request.delete('/users/testando@testando.com').then(res => {
             // Assert
             expect(res.statusCode).toEqual(200);
         })
